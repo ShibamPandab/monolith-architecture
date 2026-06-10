@@ -30,7 +30,7 @@
 
     /* Spacing System */
     --space-unit: 1rem;
-    --space-xs: calc(var-space-unit * 0.5);   /* 8px */
+    --space-xs: calc(var(--space-unit) * 0.5);   /* 8px */
     --space-sm: var(--space-unit);             /* 16px */
     --space-md: calc(var(--space-unit) * 2);   /* 32px */
     --space-lg: calc(var(--space-unit) * 4);   /* 64px */
@@ -527,6 +527,7 @@ body.menu-active .hamburger-line:last-child {
     visibility: hidden;
     overflow: hidden;
     display: flex;
+    transition: visibility var(--transition-slow);
 }
 
 @media (min-width: 768px) {
@@ -551,6 +552,7 @@ body.menu-active .hamburger-line:last-child {
 
 body.menu-active .menu-drawer {
     visibility: visible;
+    transition: none;
 }
 
 body.menu-active .menu-drawer-bg {
@@ -596,7 +598,8 @@ body.menu-active .menu-drawer-content {
 }
 
 .menu-drawer-link:hover {
-    transform: translateX(15px) italic;
+    transform: translateX(15px);
+    font-style: italic;
     color: var(--color-accent);
 }
 

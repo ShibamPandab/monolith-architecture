@@ -312,6 +312,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Helper: Stat number count ticker
     const animateCounter = (el, target) => {
+        if (!target || target <= 0) {
+            el.textContent = target || 0;
+            return;
+        }
         let current = 0;
         const duration = 2000; // ms
         const stepTime = Math.abs(Math.floor(duration / target));
