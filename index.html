@@ -13,7 +13,6 @@
     <link rel="stylesheet" href="style.css">
     <!-- GSAP for advanced animations -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
     <!-- Script -->
     <script type="module" src="app.js" defer></script>
 </head>
@@ -41,9 +40,8 @@
             
             <nav class="nav-desktop">
                 <a href="#philosophy" class="nav-link magnetic" data-cursor="hover">Philosophy</a>
-                <a href="#works" class="nav-link magnetic" data-cursor="hover">Works</a>
-                <a href="#materiality" class="nav-link magnetic" data-cursor="hover">Materiality</a>
-                <a href="#studio" class="nav-link magnetic" data-cursor="hover">Studio</a>
+                <a href="#works" class="nav-link magnetic" data-cursor="hover">Selected Works</a>
+                <a href="#studio" class="nav-link magnetic" data-cursor="hover">The Studio</a>
                 <a href="#contact" class="nav-link magnetic" data-cursor="hover">Contact</a>
             </nav>
 
@@ -68,7 +66,6 @@
             <div class="menu-drawer-links">
                 <div class="menu-link-wrapper"><a href="#philosophy" class="menu-drawer-link">Philosophy</a></div>
                 <div class="menu-link-wrapper"><a href="#works" class="menu-drawer-link">Selected Works</a></div>
-                <div class="menu-link-wrapper"><a href="#materiality" class="menu-drawer-link">Materiality</a></div>
                 <div class="menu-link-wrapper"><a href="#studio" class="menu-drawer-link">The Studio</a></div>
                 <div class="menu-link-wrapper"><a href="#contact" class="menu-drawer-link">Contact</a></div>
             </div>
@@ -148,7 +145,7 @@
                     </div>
                     <div class="philosophy-image-col scroll-reveal">
                         <div class="reveal-img-wrapper" data-cursor="expand">
-                            <img src="assets/project_tokyo_gallery.png" alt="Minimalist concrete interior with shadow" class="reveal-img">
+                            <img src="assets/project_tokyo_gallery.png" alt="Brutalist concrete wall with shadow" class="reveal-img">
                             <div class="reveal-overlay"></div>
                         </div>
                     </div>
@@ -156,211 +153,94 @@
             </div>
         </section>
 
-        <!-- Selected Works Section (GSAP Horizontal Scroll Track) -->
+        <!-- Selected Works Section -->
         <section class="works-section" id="works">
-            <div class="works-horizontal-wrapper">
-                <div class="works-sticky-container">
-                    <div class="works-scroll-track">
-                        
-                        <!-- Intro Slide -->
-                        <div class="works-slide slide-intro">
-                            <div class="slide-intro-content">
-                                <span class="section-number">02 / SELECTED WORKS</span>
-                                <h2 class="slide-massive-title">Selected<br><span class="italic-serif">Expressions</span></h2>
-                                <p class="slide-intro-text">
-                                    A curated portfolio of architectural monoliths shaping silence and space. Drag or scroll horizontally to explore.
-                                </p>
-                                <div class="scroll-helper-line">
-                                    <span class="helper-text">EXPLORE</span>
-                                    <div class="helper-track"><div class="helper-bar"></div></div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Project Slide 1 -->
-                        <div class="works-slide slide-project">
-                            <div class="project-slide-inner">
-                                <div class="project-img-container" data-cursor="view">
-                                    <img src="assets/project_swiss_alps.png" alt="Villa Nebula" class="project-slide-img">
-                                </div>
-                                <div class="project-slide-info">
-                                    <div class="project-slide-meta">
-                                        <span class="project-slide-num">01</span>
-                                        <span class="project-slide-category">RESIDENTIAL / SWITZERLAND</span>
-                                    </div>
-                                    <h3 class="project-slide-title">Villa Nebula</h3>
-                                    <p class="project-slide-desc">
-                                        A subterranean brutalist concrete retreat embedded in the rocky slopes of the Swiss Alps, capturing mountain views through raw framed portals.
-                                    </p>
-                                    <a href="#contact" class="project-slide-link underline-link" data-cursor="hover">Inquire about project</a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Project Slide 2 -->
-                        <div class="works-slide slide-project">
-                            <div class="project-slide-inner">
-                                <div class="project-img-container" data-cursor="view">
-                                    <img src="assets/project_kyoto_pavilion.png" alt="Shadow Pavilion" class="project-slide-img">
-                                </div>
-                                <div class="project-slide-info">
-                                    <div class="project-slide-meta">
-                                        <span class="project-slide-num">02</span>
-                                        <span class="project-slide-category">CULTURAL / KYOTO</span>
-                                    </div>
-                                    <h3 class="project-slide-title">Shadow Pavilion</h3>
-                                    <p class="project-slide-desc">
-                                        A zen-inspired pavilion constructed of charred cedar and blackened steel, reflecting the shifting patterns of bamboo shadows.
-                                    </p>
-                                    <a href="#contact" class="project-slide-link underline-link" data-cursor="hover">Inquire about project</a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Project Slide 3 -->
-                        <div class="works-slide slide-project">
-                            <div class="project-slide-inner">
-                                <div class="project-img-container" data-cursor="view">
-                                    <img src="assets/project_norway_cliff.png" alt="The Monolith Cliff" class="project-slide-img">
-                                </div>
-                                <div class="project-slide-info">
-                                    <div class="project-slide-meta">
-                                        <span class="project-slide-num">03</span>
-                                        <span class="project-slide-category">RESIDENTIAL / NORWAY</span>
-                                    </div>
-                                    <h3 class="project-slide-title">The Monolith Cliff</h3>
-                                    <p class="project-slide-desc">
-                                        A dramatic cantilevered structure projecting out over a dark fjord, blurring the lines between geological formation and architecture.
-                                    </p>
-                                    <a href="#contact" class="project-slide-link underline-link" data-cursor="hover">Inquire about project</a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Project Slide 4 -->
-                        <div class="works-slide slide-project">
-                            <div class="project-slide-inner">
-                                <div class="project-img-container" data-cursor="view">
-                                    <img src="assets/hero_brutalist_villa.png" alt="Aether Gallery" class="project-slide-img">
-                                </div>
-                                <div class="project-slide-info">
-                                    <div class="project-slide-meta">
-                                        <span class="project-slide-num">04</span>
-                                        <span class="project-slide-category">GALLERY / TOKYO</span>
-                                    </div>
-                                    <h3 class="project-slide-title">Aether Gallery</h3>
-                                    <p class="project-slide-desc">
-                                        A monolithic exhibition hall with an overhead concrete skylight, generating sharp geometric light plays throughout the seasons.
-                                    </p>
-                                    <a href="#contact" class="project-slide-link underline-link" data-cursor="hover">Inquire about project</a>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Before/After Blueprint Materiality Section -->
-        <section class="materiality-section" id="materiality">
             <div class="section-container">
                 <div class="section-header">
-                    <span class="section-number scroll-reveal">03 / MATERIALITY</span>
-                    <h2 class="section-title scroll-reveal">From Line to Stone</h2>
+                    <span class="section-number scroll-reveal">02 / SELECTED WORKS</span>
+                    <h2 class="section-title scroll-reveal">Monolithic Expressions</h2>
                 </div>
 
-                <div class="materiality-intro">
-                    <p class="materiality-lead scroll-reveal">
-                        Architecture begins in the abstract space of the blueprint and manifests in the silent weight of stone, concrete, and steel. Drag the slider to experience the translation.
-                    </p>
-                </div>
+                <div class="works-list">
+                    <!-- Project 1 -->
+                    <article class="project-item scroll-reveal">
+                        <div class="project-img-wrapper" data-cursor="view">
+                            <a href="#" class="project-link">
+                                <img src="assets/project_swiss_alps.png" alt="Villa Nebula Swiss Alps" class="project-img">
+                                <div class="project-overlay"></div>
+                            </a>
+                        </div>
+                        <div class="project-info">
+                            <div class="project-meta">
+                                <span class="project-num">01</span>
+                                <span class="project-category">RESIDENTIAL / SWITZERLAND</span>
+                            </div>
+                            <div class="project-details">
+                                <h3 class="project-title"><a href="#" data-cursor="hover">Villa Nebula</a></h3>
+                                <p class="project-desc">A subterranean brutalist concrete retreat embedded in the rocky slopes of the Swiss Alps, capturing mountain views through raw framed portals.</p>
+                            </div>
+                        </div>
+                    </article>
 
-                <!-- Slider Container -->
-                <div class="slider-container scroll-reveal" id="blueprint-slider">
-                    
-                    <!-- Background: Reality Photo -->
-                    <div class="slider-reality">
-                        <img src="assets/project_norway_cliff.png" alt="Norway Cliff Residence - Reality" class="slider-img">
-                        <div class="slider-label label-reality">Reality</div>
-                    </div>
-                    
-                    <!-- Foreground: Blueprint Overlay -->
-                    <div class="slider-blueprint">
-                        <div class="blueprint-content">
-                            <!-- SVG Blueprint Drawing -->
-                            <svg class="blueprint-svg" viewBox="0 0 1200 750" preserveAspectRatio="xMidYMid slice">
-                                <defs>
-                                    <pattern id="blueprint-grid" width="40" height="40" patternUnits="userSpaceOnUse">
-                                        <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(0, 180, 255, 0.12)" stroke-width="0.75"/>
-                                    </pattern>
-                                </defs>
-                                <rect width="100%" height="100%" fill="url(#blueprint-grid)" />
-                                
-                                <!-- Schematic Drawing Group -->
-                                <g stroke="#00b4ff" stroke-width="1.25" fill="none" opacity="0.85">
-                                    <!-- Ground Level -->
-                                    <line x1="50" y1="580" x2="1150" y2="580" stroke-width="2.5" stroke-dasharray="12 6" />
-                                    <!-- Cliff Topography -->
-                                    <path d="M 50 580 L 450 580 L 650 500 L 665 720 L 1150 720" stroke-width="2" stroke-dasharray="6 6" />
-                                    
-                                    <!-- Building Outer Shell -->
-                                    <rect x="300" y="280" width="480" height="220" stroke-width="2" />
-                                    <rect x="250" y="180" width="260" height="100" stroke-width="1.5" />
-                                    
-                                    <!-- Cantilever Supports -->
-                                    <line x1="300" y1="500" x2="450" y2="580" stroke-width="3" />
-                                    <line x1="520" y1="500" x2="650" y2="720" stroke-width="3" />
-                                    
-                                    <!-- Internal Divisions -->
-                                    <line x1="420" y1="280" x2="420" y2="500" stroke-dasharray="3 3" />
-                                    <line x1="560" y1="280" x2="560" y2="500" stroke-dasharray="3 3" />
-                                    <line x1="680" y1="280" x2="680" y2="500" stroke-dasharray="3 3" />
-                                    
-                                    <!-- Staircase Schematic -->
-                                    <path d="M 430 500 L 480 430 M 440 500 L 490 430 M 450 500 L 500 430" />
-                                    
-                                    <!-- Dimension Markings -->
-                                    <g stroke-width="1" opacity="0.6">
-                                        <!-- Vertical height marker -->
-                                        <line x1="820" y1="180" x2="820" y2="500" />
-                                        <line x1="810" y1="180" x2="830" y2="180" />
-                                        <line x1="810" y1="500" x2="830" y2="500" />
-                                        <path d="M 820 180 L 815 190 M 820 180 L 825 190 M 820 500 L 815 490 M 820 500 L 825 490" />
-                                        
-                                        <!-- Horizontal width marker -->
-                                        <line x1="300" y1="535" x2="780" y2="535" />
-                                        <line x1="300" y1="525" x2="300" y2="545" />
-                                        <line x1="780" y1="525" x2="780" y2="545" />
-                                    </g>
-                                    
-                                    <!-- Dimensions Text -->
-                                    <g fill="#00b4ff" stroke="none" font-family="monospace" font-size="11">
-                                        <text x="840" y="345">HEIGHT LIMIT: 16.50m</text>
-                                        <text x="500" y="555">SPAN: 24.00m</text>
-                                        <text x="320" y="320">ZONE 01 / PRIMARY GALLERY</text>
-                                        <text x="320" y="460">CANTILEVER STRUCTURE / RAW CONCRETE</text>
-                                        <text x="270" y="230">ATELIER CORE</text>
-                                        <text x="695" y="320">BALCONY</text>
-                                        <text x="695" y="335">DECK</text>
-                                        <text x="50" y="700" opacity="0.5">ATELIER MONOLITH © 2026 - ARCHITECTURAL DRAFT v2.4</text>
-                                    </g>
-                                </g>
-                            </svg>
-                            <div class="slider-label label-blueprint">Blueprint</div>
+                    <!-- Project 2 -->
+                    <article class="project-item scroll-reveal">
+                        <div class="project-img-wrapper" data-cursor="view">
+                            <a href="#" class="project-link">
+                                <img src="assets/project_kyoto_pavilion.png" alt="Shadow Pavilion Kyoto" class="project-img">
+                                <div class="project-overlay"></div>
+                            </a>
                         </div>
-                    </div>
-                    
-                    <!-- Drag handle -->
-                    <div class="slider-handle">
-                        <div class="handle-line"></div>
-                        <div class="handle-button" data-cursor="hover">
-                            <svg viewBox="0 0 24 24" width="20" height="20">
-                                <path fill="currentColor" d="M8 7l-5 5 5 5V7zm8 0l5 5-5 5V7z"/>
-                            </svg>
+                        <div class="project-info">
+                            <div class="project-meta">
+                                <span class="project-num">02</span>
+                                <span class="project-category">CULTURAL / KYOTO</span>
+                            </div>
+                            <div class="project-details">
+                                <h3 class="project-title"><a href="#" data-cursor="hover">Shadow Pavilion</a></h3>
+                                <p class="project-desc">A zen-inspired pavilion constructed of charred cedar and blackened steel, reflecting the shifting patterns of bamboo shadows.</p>
+                            </div>
                         </div>
-                        <div class="handle-line"></div>
-                    </div>
+                    </article>
+
+                    <!-- Project 3 -->
+                    <article class="project-item scroll-reveal">
+                        <div class="project-img-wrapper" data-cursor="view">
+                            <a href="#" class="project-link">
+                                <img src="assets/project_norway_cliff.png" alt="Cliffside Residence Norway" class="project-img">
+                                <div class="project-overlay"></div>
+                            </a>
+                        </div>
+                        <div class="project-info">
+                            <div class="project-meta">
+                                <span class="project-num">03</span>
+                                <span class="project-category">RESIDENTIAL / NORWAY</span>
+                            </div>
+                            <div class="project-details">
+                                <h3 class="project-title"><a href="#" data-cursor="hover">The Monolith Cliff</a></h3>
+                                <p class="project-desc">A dramatic cantilevered structure projecting out over a dark fjord, blurring the lines between geological formation and architecture.</p>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Project 4 -->
+                    <article class="project-item scroll-reveal">
+                        <div class="project-img-wrapper" data-cursor="view">
+                            <a href="#" class="project-link">
+                                <img src="assets/project_tokyo_gallery.png" alt="Silent Gallery Tokyo" class="project-img">
+                                <div class="project-overlay"></div>
+                            </a>
+                        </div>
+                        <div class="project-info">
+                            <div class="project-meta">
+                                <span class="project-num">04</span>
+                                <span class="project-category">GALLERY / TOKYO</span>
+                            </div>
+                            <div class="project-details">
+                                <h3 class="project-title"><a href="#" data-cursor="hover">Aether Gallery</a></h3>
+                                <p class="project-desc">A monolithic exhibition hall with an overhead concrete skylight, generating sharp geometric light plays throughout the seasons.</p>
+                            </div>
+                        </div>
+                    </article>
                 </div>
             </div>
         </section>
@@ -369,7 +249,7 @@
         <section class="studio-section" id="studio">
             <div class="section-container">
                 <div class="section-header">
-                    <span class="section-number scroll-reveal">04 / THE STUDIO</span>
+                    <span class="section-number scroll-reveal">03 / THE STUDIO</span>
                     <h2 class="section-title scroll-reveal">Shaping the Form</h2>
                 </div>
 
@@ -436,7 +316,7 @@
         <section class="contact-section" id="contact">
             <div class="section-container">
                 <div class="section-header">
-                    <span class="section-number scroll-reveal">05 / INQUIRIES</span>
+                    <span class="section-number scroll-reveal">04 / INQUIRIES</span>
                     <h2 class="section-title scroll-reveal">Begin a Dialogue</h2>
                 </div>
 

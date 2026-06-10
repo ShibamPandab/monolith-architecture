@@ -1,5 +1,5 @@
 /* ==========================================================================
-   ATELIER MONOLITH — INTERACTION & ANIMATION LOGIC
+   ATELIER MONOLITH — INTERACTION & ANIMATION LOGIC (VERTICAL LAYOUT)
    ========================================================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     /* 1. INITIALIZE STATE
        ========================================================================== */
-     const init = () => {
+    const init = () => {
         // Set Theme
         html.setAttribute('data-theme', state.theme);
         updateThemeButtonUI();
@@ -60,9 +60,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 closeMenu();
             });
         });
-
-        // Initialize Blueprint Before/After Slider
-        initBlueprintSlider();
 
         // Initialize preloader sequence
         runPreloader();
@@ -93,7 +90,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // Update UI
             preloaderProgress.style.width = `${currentProgress}%`;
             preloaderCounter.textContent = currentProgress.toString().padStart(2, '0');
-        }, 60);
+        }, 80);
     };
 
     /* 3. HERO & INITIAL ANIMATIONS
@@ -186,13 +183,14 @@ document.addEventListener('DOMContentLoaded', () => {
         interactiveElements.forEach(el => {
             el.addEventListener('mouseenter', () => {
                 const cursorState = el.getAttribute('data-cursor');
-                body.className = body.className.replace(/\bcursor-\S+/g, '');
-                
                 if (cursorState === 'expand') {
+                    body.className = body.className.replace(/\bcursor-\S+/g, '');
                     body.classList.add('cursor-expand');
                 } else if (cursorState === 'view') {
+                    body.className = body.className.replace(/\bcursor-\S+/g, '');
                     body.classList.add('cursor-view');
                 } else {
+                    body.className = body.className.replace(/\bcursor-\S+/g, '');
                     body.classList.add('cursor-hover');
                 }
             });
@@ -204,40 +202,36 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     // Magnetic effect for ultra-premium feel on specific elements
-    const initMagnetics = () => {
-        document.querySelectorAll('.magnetic').forEach(el => {
-            el.addEventListener('mousemove', (e) => {
-                const bound = el.getBoundingClientRect();
-                const x = e.clientX - bound.left - (bound.width / 2);
-                const y = e.clientY - bound.top - (bound.height / 2);
-                
-                if (window.gsap) {
-                    gsap.to(el, {
-                        x: x * 0.35,
-                        y: y * 0.35,
-                        duration: 0.3,
-                        ease: 'power2.out'
-                    });
-                }
-            });
-
-            el.addEventListener('mouseleave', () => {
-                if (window.gsap) {
-                    gsap.to(el, {
-                        x: 0,
-                        y: 0,
-                        duration: 0.5,
-                        ease: 'elastic.out(1, 0.3)'
-                    });
-                }
-            });
+    document.querySelectorAll('.magnetic').forEach(el => {
+        el.addEventListener('mousemove', (e) => {
+            const bound = el.getBoundingClientRect();
+            const x = e.clientX - bound.left - (bound.width / 2);
+            const y = e.clientY - bound.top - (bound.height / 2);
+            
+            if (window.gsap) {
+                gsap.to(el, {
+                    x: x * 0.35,
+                    y: y * 0.35,
+                    duration: 0.3,
+                    ease: 'power2.out'
+                });
+            }
         });
-    };
-    
-    initMagnetics();
+
+        el.addEventListener('mouseleave', () => {
+            if (window.gsap) {
+                gsap.to(el, {
+                    x: 0,
+                    y: 0,
+                    duration: 0.5,
+                    ease: 'elastic.out(1, 0.3)'
+                });
+            }
+        });
+    });
 
 
-    /* 5. SCROLL INTERACTIONS, REVEALS, & GSAP HORIZONTAL SCROLL
+    /* 5. SCROLL INTERACTIONS & REVEALS
        ========================================================================== */
     const handleScroll = () => {
         state.scrollPos = window.scrollY;
@@ -263,12 +257,12 @@ document.addEventListener('DOMContentLoaded', () => {
         state.lastScrollPos = state.scrollPos;
     };
 
-    // Standard Intersection Observer for elements and grids (fallback/staggered reveal)
+    // Standard Intersection Observer for elements and grids
     const initScrollTriggers = () => {
         const observerOptions = {
             root: null,
             rootMargin: '0px',
-            threshold: 0.1
+            threshold: 0.12
         };
 
         // Scroll reveals for layout elements
@@ -314,80 +308,6 @@ document.addEventListener('DOMContentLoaded', () => {
         statNumbers.forEach(num => {
             counterObserver.observe(num);
         });
-
-        // Initialize GSAP horizontal scrolling for selected works
-        initGsapHorizontalScroll();
-    };
-
-    // GSAP Horizontal Scroll Showcase for desktop
-    const initGsapHorizontalScroll = () => {
-        const track = document.querySelector('.works-scroll-track');
-        if (!track || !window.gsap || !window.ScrollTrigger) return;
-
-        gsap.registerPlugin(ScrollTrigger);
-        
-        let mm = gsap.matchMedia();
-
-        mm.add("(min-width: 1024px)", () => {
-            const slides = gsap.utils.toArray('.works-slide');
-            const scrollAmount = track.scrollWidth - window.innerWidth;
-            
-            // Primary horizontal slide animation
-            const scrollTween = gsap.to(track, {
-                x: -scrollAmount,
-                ease: "none",
-                scrollTrigger: {
-                    trigger: ".works-section",
-                    pin: true,
-                    scrub: 0.8,
-                    start: "top top",
-                    end: () => `+=${scrollAmount}`,
-                    invalidateOnRefresh: true,
-                }
-            });
-
-            // Image Parallax scroll inside each project slide
-            slides.forEach(slide => {
-                const img = slide.querySelector('.project-slide-img');
-                const info = slide.querySelector('.project-slide-info');
-                
-                if (img) {
-                    gsap.fromTo(img, 
-                        { xPercent: -12, scale: 1.08 },
-                        { 
-                            xPercent: 12,
-                            scale: 1.02,
-                            ease: "none",
-                            scrollTrigger: {
-                                trigger: slide,
-                                containerAnimation: scrollTween,
-                                start: "left right",
-                                end: "right left",
-                                scrub: true
-                            }
-                        }
-                    );
-                }
-                
-                if (info) {
-                    gsap.fromTo(info, 
-                        { xPercent: 10, opacity: 0.3 },
-                        { 
-                            xPercent: 0,
-                            opacity: 1,
-                            ease: "power2.out",
-                            scrollTrigger: {
-                                trigger: slide,
-                                containerAnimation: scrollTween,
-                                start: "left right",
-                                end: "left center",
-                                scrub: true
-                            }
-                        }
-                    );
-                }
-            });
-        });
     };
 
     // Helper: Stat number count ticker
@@ -408,66 +328,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 clearInterval(timer);
             }
         }, stepTime);
-    };
-
-
-    /* 5.5 BLUEPRINT BEFORE/AFTER SLIDER INTERACTION
-       ========================================================================== */
-    const initBlueprintSlider = () => {
-        const slider = document.getElementById('blueprint-slider');
-        if (!slider) return;
-
-        const handle = slider.querySelector('.slider-handle');
-        const blueprint = slider.querySelector('.slider-blueprint');
-        let isDragging = false;
-
-        const setSliderPos = (clientX) => {
-            const rect = slider.getBoundingClientRect();
-            const offsetX = clientX - rect.left;
-            let percentage = (offsetX / rect.width) * 100;
-
-            if (percentage < 0) percentage = 0;
-            if (percentage > 100) percentage = 100;
-
-            blueprint.style.width = `${percentage}%`;
-            handle.style.left = `${percentage}%`;
-        };
-
-        const startDragging = () => {
-            isDragging = true;
-            body.classList.add('cursor-expand');
-        };
-
-        const stopDragging = () => {
-            isDragging = false;
-            body.classList.remove('cursor-expand');
-        };
-
-        const dragMove = (e) => {
-            if (!isDragging) return;
-            const clientX = e.type.includes('touch') ? e.touches[0].clientX : e.clientX;
-            setSliderPos(clientX);
-        };
-
-        // Event Listeners for dragging
-        handle.addEventListener('mousedown', startDragging);
-        window.addEventListener('mouseup', stopDragging);
-        window.addEventListener('mousemove', dragMove);
-
-        // Mobile touch events
-        handle.addEventListener('touchstart', startDragging, { passive: true });
-        window.addEventListener('touchend', stopDragging);
-        window.addEventListener('touchmove', dragMove, { passive: false });
-
-        // Click to slide transition
-        slider.addEventListener('click', (e) => {
-            if (e.target.closest('.slider-handle')) return;
-            setSliderPos(e.clientX);
-        });
-
-        // Initialize state to 50%
-        blueprint.style.width = '50%';
-        handle.style.left = '50%';
     };
 
 
